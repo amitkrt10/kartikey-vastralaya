@@ -9,7 +9,6 @@ gc = pygsheets.authorize(service_file='creds.json')
 def app():
     purchaseDf = am.analyticssDf
     purchaseDf.dropna(inplace=True)
-    purchaseDf['availableStock'] = purchaseDf['availableStock'].astype(int)
     productTypeList = list(purchaseDf['productType'].unique())
     productTypeList.sort()
 
