@@ -34,7 +34,7 @@ def app():
     columnorder = [1,2],
     columnwidth = [110,70],
     header = dict(
-        values = [[f'<b>Date</b>'],
+        values = [[f'<b>{productType}</b>'],
                     ['<b>Unit Price</b>']],
         line_color='darkslategray',
         fill_color='royalblue',
