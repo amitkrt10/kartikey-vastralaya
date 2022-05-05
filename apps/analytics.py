@@ -81,26 +81,28 @@ def app():
     st.write(fig)
 
     #Stocks
-    stockDf = groupDf[['stock','soldStock','availableStock']]
+    stockDf = groupDf[['stock','soldStock','availableStock','availbleStockValue']]
     stockDf.sort_values(by=['availableStock'],ascending=False,inplace=True)
     lendf = len(stockDf)+1
     cols = list(stockDf.columns)
     dfValues = [list(stockDf.index) + ['<b>Total</b>'],
                     list(stockDf[cols[0]]) + [f'<b>{stockDf[cols[0]].sum()}</b>'],
                     list(stockDf[cols[1]]) + [f'<b>{stockDf[cols[1]].sum()}</b>'],
-                    list(stockDf[cols[2]]) + [f'<b>{stockDf[cols[2]].sum()}</b>']]
+                    list(stockDf[cols[2]]) + [f'<b>{stockDf[cols[2]].sum()}</b>'],
+                    list(stockDf[cols[3]]) + [f'<b>{stockDf[cols[3]].sum()}</b>']]
     fig = go.Figure(data=[go.Table(
-    columnorder = [1,2,3,4],
-    columnwidth = [60,40,40,40],
+    columnorder = [1,2,3,4,5],
+    columnwidth = [40,35,35,35,35],
     header = dict(
         values = [['<b>Category</b>'],
-                    ['<b>Purchase Stocks</b>'],
-                    ['<b>Sold Stocks</b>'],
-                    ['<b>Availabe Stocks</b>']],
+                    ['<b>Purchased</b>'],
+                    ['<b>Sold</b>'],
+                    ['<b>Availabe</b>'],
+                    ['<b>A.Value</b>']],
         line_color='darkslategray',
         fill_color='royalblue',
         align='center',
-        font=dict(color='white', size=16),
+        font=dict(color='white', size=14),
         height=40
     ),
     cells=dict(
